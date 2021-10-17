@@ -1,0 +1,20 @@
+.headerWrapper {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 1em;
+  align-items: center;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 30px;
+  color: white;
+  background-color: #3da9ff;
+  cursor: pointer;
+  border-radius: 5px;
+}

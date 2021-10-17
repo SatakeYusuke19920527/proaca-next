@@ -1,0 +1,12 @@
+.wrapper {
+  width: 100vw;
+}
+
+.titleArea {
+  padding: 3rem 2rem;
+}
+
+.cardArea {
+  display: flex;
+  justify-content: space-around;
+}
