@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import styles from '../styles/Header.module.css';
-import axios from 'axios';
 import { googleSignIn, googleSignOut } from '../lib/firebase';
-import { useRouter } from 'next/router';
 import { useAppSelector } from '../app/hooks';
 import { selectUser } from '../features/userSlice';
 import Avatar from '@mui/material/Avatar';

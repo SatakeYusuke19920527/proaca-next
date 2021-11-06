@@ -1,9 +1,15 @@
 import type { NextPage } from 'next';
 import styles from '../styles/StCard.module.css';
-const stCard: NextPage = () => {
+const stCard = ({
+  children,
+  onClick,
+}: {
+  children: any;
+  onClick: () => void;
+}) => {
   return (
-    <header className={styles.cardWrapper}>
-      <h1>Hello World</h1>
+    <header onClick={onClick} className={styles.cardWrapper}>
+      {children}
     </header>
   );
 };
