@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { NextPage } from 'next';
 import Layout from '../components/layout';
 import styles from '../styles/Appointment.module.css';
-const Appointment: NextPage = () => {
+const Line: NextPage = () => {
   const [name, setName] = useState<string>('');
 
   const handleAppoint = () => {
@@ -33,4 +33,4 @@ const Appointment: NextPage = () => {
   );
 };
 
-export default Appointment;
+export default Line;
