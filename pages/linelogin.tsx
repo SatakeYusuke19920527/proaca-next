@@ -1,21 +1,37 @@
-import { useState } from 'react';
 import type { NextPage } from 'next';
+import liff from '@line/liff';
 import Layout from '../components/layout';
 import styles from '../styles/Appointment.module.css';
 
-let URL =
-  'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1656017678&redirect_uri=http://localhost:3000/&state=12345abcde&scope=profile%20openid%20email';
-
 const Line: NextPage = () => {
-  const sendLine = async () => {
-    console.log('🚀 ~ file: line.tsx ~ line 7 ~ URL', URL);
-    try {
-      const response = await fetch(`${URL}hello`);
-      const data = await response.json();
-      console.log('🚀 ~ file: line.tsx ~ line 15 ~ sendLine ~ data', data);
-    } catch (error) {
-      console.log('🚀 ~ file: line.tsx ~ line 17 ~ sendLine ~ error', error);
-    }
+  const liffFunc = async () => {
+    liff
+      .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID as string }) // LIFF IDをセットする
+      .then(() => {
+        if (!liff.isLoggedIn()) {
+          console.log('test 1 =======');
+          liff.login({}); // ログインしていなければ最初にログインする
+        } else if (liff.isInClient()) {
+          console.log('test 2 =======');
+          // LIFFので動いているのであれば
+          liff
+            .sendMessages([
+              {
+                // メッセージを送信する
+                type: 'text',
+                text: "You've successfully sent a message! Hooray!",
+              },
+            ])
+            .then(function () {
+              console.log('test 3 =======');
+              window.alert('Message sent');
+            })
+            .catch(function (error) {
+              console.log('test 4 =======');
+              window.alert('Error sending message: ' + error);
+            });
+        }
+      });
   };
 
   return (
@@ -23,9 +39,8 @@ const Line: NextPage = () => {
       <main className={styles.wrapper}>
         <div className={styles.formarea}>
           <h1 className={styles.title}>line login</h1>
-          <a href={URL}>line login</a>
-          <button className={styles.buttonarea} onClick={sendLine}>
-            line送信
+          <button className={styles.buttonarea} onClick={liffFunc}>
+            line login
           </button>
         </div>
       </main>
