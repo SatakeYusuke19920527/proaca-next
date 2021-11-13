@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import AppointmentCard from './appointmentCard';
 import LineCard from './lineCard';
+import LineLoginCard from './lineLoginCard';
 import styles from '../styles/Dashboard.module.css';
 const Dashboard: NextPage = () => {
   return (
@@ -9,6 +10,7 @@ const Dashboard: NextPage = () => {
       <section className={styles.cardArea}>
         <AppointmentCard />
         <LineCard />
+        <LineLoginCard />
       </section>
     </section>
   );
